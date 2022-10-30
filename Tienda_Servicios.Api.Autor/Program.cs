@@ -1,4 +1,6 @@
+using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Tienda_Servicios.Api.Autor.Application;
 using Tienda_Servicios.Api.Autor.ApplicationDBContext;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +11,7 @@ builder.Services.AddDbContext<ContextoAutor>(options =>
 {
     options.UseNpgsql(builder.Configuration.GetConnectionString("ConexionDatabase"));
 });
+builder.Services.AddMediatR(typeof(Nuevo.Manejador).Assembly);
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
