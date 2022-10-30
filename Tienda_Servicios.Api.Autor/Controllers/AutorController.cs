@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Tienda_Servicios.Api.Autor.Application;
+using Tienda_Servicios.Api.Autor.Model;
 
 namespace Tienda_Servicios.Api.Autor.Controllers
 {
@@ -13,8 +14,14 @@ namespace Tienda_Servicios.Api.Autor.Controllers
         {
             _mediator = mediator;
         }
+
+        [HttpGet ("/GetAutor")]
+        public async Task<ActionResult<List<AutorLibro>>> Get()
+        {
+            return await _mediator.Send(new Consulta.ListaAutor());
+        }
         
-        [HttpPost ("/Create")]
+        [HttpPost ("/CreateAutor")]
         public async Task<ActionResult<Unit>> Create(Nuevo.Ejecuta data)
         {
             return await _mediator.Send(data);
