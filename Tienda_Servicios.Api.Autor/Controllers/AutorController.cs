@@ -16,7 +16,7 @@ namespace Tienda_Servicios.Api.Autor.Controllers
         }
 
         [HttpGet ("/GetAutor")]
-        public async Task<ActionResult<List<AutorLibro>>> Get()
+        public async Task<ActionResult<List<AutorLibroDTO>>> Get()
         {
             return await _mediator.Send(new Consulta.ListaAutor());
         }
@@ -28,7 +28,7 @@ namespace Tienda_Servicios.Api.Autor.Controllers
         }
 
         [HttpGet ("/GetUniqueAutor/{id}")]
-        public async Task<ActionResult<AutorLibro>> GetAutorLibro(string id)
+        public async Task<ActionResult<AutorLibroDTO>> GetAutorLibro(string id)
         {
             return await _mediator.Send(new ConsultaFiltro.AutorUnico { AutorGuid = id});
         }

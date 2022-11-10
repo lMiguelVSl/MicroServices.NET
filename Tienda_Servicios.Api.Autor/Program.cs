@@ -1,3 +1,4 @@
+using FluentValidation;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Tienda_Servicios.Api.Autor.Application;
@@ -12,6 +13,8 @@ builder.Services.AddDbContext<ContextoAutor>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("ConexionDatabase"));
 });
 builder.Services.AddMediatR(typeof(Nuevo.Manejador).Assembly);
+builder.Services.AddValidatorsFromAssemblyContaining<Nuevo>();
+builder.Services.AddAutoMapper(typeof(Consulta.Handler));
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
