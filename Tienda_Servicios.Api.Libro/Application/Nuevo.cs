@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
 using MediatR;
 using Tienda_Servicios.Api.Libro.ApplicationDBContext;
+using Tienda_Servicios.Api.Libro.Model;
 
 namespace Tienda_Servicios.Api.Libro.Application
 {
@@ -31,9 +32,18 @@ namespace Tienda_Servicios.Api.Libro.Application
                 _libreriaContexto = libreriaContexto;
             }
 
-            public Task<Unit> Handle(Ejecuta request, CancellationToken cancellationToken)
+            public async Task<Unit> Handle(Ejecuta request, CancellationToken cancellationToken)
             {
-                throw new NotImplementedException();
+                var book = new LibreriaMaterial()
+                {
+                    Titulo = request.Titulo,
+                    FechaPublicacion = request.FechaPublicacion,
+                    AutorLibro = request.AutorLibro
+                };
+
+                _libreriaContexto.LibreriaMaterial.Add(book);
+                var value = await _libreriaContexto.SaveChangesAsync();
+                return value > 0 ? Unit.Value : throw new Exception("The book could not be added");
             }
         }
     }
