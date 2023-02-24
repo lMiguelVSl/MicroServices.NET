@@ -25,7 +25,6 @@
 
   <ItemGroup>
     <Folder Include="ApplicationDBContext\" />
-    <Folder Include="Application\" />
     <Folder Include="Migrations\" />
   </ItemGroup>
 
