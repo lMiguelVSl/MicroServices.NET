@@ -1,9 +1,18 @@
+using MediatR;
+using Microsoft.EntityFrameworkCore;
+using Tienda_Servicios.Api.Libro.Application;
+using Tienda_Servicios.Api.Libro.ApplicationDBContext;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddDbContext<LibreriaContexto>(opt =>
+{
+    opt.UseSqlServer(builder.Configuration.GetConnectionString("DBConnection"));
+});
+builder.Services.AddMediatR(typeof(Nuevo.Handler).Assembly);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 

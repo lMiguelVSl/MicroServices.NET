@@ -7,6 +7,6 @@ namespace Tienda_Servicios.Api.Libro.ApplicationDBContext
     {
         public LibreriaContexto(DbContextOptions<LibreriaContexto> options) : base(options) {}
 
-        public DbSet<LibreriaMaterial> LibreriaMaterial { get; set; }
+        public DbSet<LibroMaterial> LibreriaMaterial { get; set; }
     }
 }

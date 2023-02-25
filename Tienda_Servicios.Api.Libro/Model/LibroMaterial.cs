@@ -1,6 +1,6 @@
 ﻿namespace Tienda_Servicios.Api.Libro.Model
 {
-    public class LibreriaMaterial
+    public class LibroMaterial
     {
         public Guid? LibreriaMaterialId { get; set; }
         public string Titulo { get; set; }

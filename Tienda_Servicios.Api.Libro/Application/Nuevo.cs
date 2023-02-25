@@ -34,7 +34,7 @@ namespace Tienda_Servicios.Api.Libro.Application
 
             public async Task<Unit> Handle(Ejecuta request, CancellationToken cancellationToken)
             {
-                var book = new LibreriaMaterial()
+                var book = new LibroMaterial()
                 {
                     Titulo = request.Titulo,
                     FechaPublicacion = request.FechaPublicacion,
